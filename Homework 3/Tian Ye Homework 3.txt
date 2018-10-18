@@ -1,0 +1,18 @@
+void transpose(int *dst, int *src, int dim)
+{
+   int i, j, innerI, innerJ;
+   int blk = 16;  // cache block size
+   for (i = 0; i < dim; i+=blk)
+   {
+		for (j = 0; j < dim; j+=blk)
+		{
+			for (innerI = i; (innerI < dim) && (innerI < i+blk); innerI++)
+			{
+				for (innerJ = j; (innerJ < dim) && (innerJ < j+blk); innerJ++)
+				{
+					dst[innerJ*dim + innerI] = src[innerI*dim + innerJ];
+				}
+			}
+		}
+	}
+}
