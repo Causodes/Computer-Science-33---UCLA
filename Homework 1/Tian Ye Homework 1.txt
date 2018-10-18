@@ -1,0 +1,23 @@
+Tian Ye
+
+Problem 2.7.1
+
+A.. The provided code fails to implement any form of sign extraction from the byte. It instead gives an unsigned implementation of xbyte.
+
+B.
+
+int xbyte(packed_t word, int bytenum)
+{
+ int temp = 3-bytenum;
+ temp = temp << 3;
+ temp = word << temp;
+ return temp >> 24;
+}
+
+Problem 2.8.2
+
+A. This expression is false. If x is TMIN, -x is still TMIN.
+B. This expression is true. The first part of the lefthand side effectively evaluates to multiplying it by 16, then adding a y and subtracting an x. This is reflected in the righthand side.
+C. This expression is true, as the complement is effectively the negative minus 1; therefore, the left side requires an additional 1 to be equivalent to the right.
+D. This expression is true, as the negative unsigned on the righthand side distributed is equivalent to the left.
+E. This expression is true, as the shifting can cause loss of bits, but it will never be greater than the original as the left shifts will always shift in 0s, regardless of what the two shifted off bits were.
